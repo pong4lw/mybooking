@@ -1,0 +1,15 @@
+curl -sS https://getcomposer.org/installer | php
+php composer.phar
+php composer.phar create-project laravel/laravel gym
+
+
+envファイル編集
+
+composer update
+
+php artisan key:generate
+
+php artisan migrate
+php artisan make:migration
+
+php artisan migrate:refresh
