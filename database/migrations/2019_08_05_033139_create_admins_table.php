@@ -22,7 +22,7 @@ class CreateAdminsTable extends Migration
             $table->string('email',255);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password',255);
-            $table->enum('user_type', ['client','admin','staff'])->default('staff');
+            $table->enum('user_type', ['client','admin','staff','staff2'])->default('staff');
             $table->string('admin_id',255)->default('0');
             $table->string('is_delete',2)->default('0');
             $table->rememberToken();
