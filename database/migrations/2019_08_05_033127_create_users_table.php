@@ -18,6 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name',55);
             $table->string('image')->default('');
             $table->text('description')->nullable();
+            $table->unsignedBigInteger('shop_id');
             $table->string('address',255)->default('');
             $table->string('tel',255)->default('');
             $table->string('tel2',255)->default('');

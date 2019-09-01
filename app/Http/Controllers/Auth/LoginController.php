@@ -36,18 +36,24 @@ class LoginController extends BaseController
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct($shop_id = null)
+    { 
         $this->middleware('guest')->except('logout');
     }
+    
    public function logout(Request $request)
     {
         Auth::logout();
-
         $this->guard()->logout();
-
         $request->session()->invalidate();
 
-        return $this->loggedOut($request) ?: redirect('/user/login');
+        return $this->loggedOut($request) ?: redirect('login');
+    }
+
+    protected function credentials(Request $request)
+    {
+        $temporary = $request->only($this->username(), 'password');
+//        $temporary['shop_id'] = $request->shop_id;
+        return $temporary;
     }
 }

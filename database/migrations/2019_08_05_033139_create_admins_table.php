@@ -19,6 +19,7 @@ class CreateAdminsTable extends Migration
             $table->string('image',255)->default('');
             $table->string('tel',255);
             $table->string('address',255);
+            $table->unsignedBigInteger('shop_id');
             $table->string('email',255);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password',255);

@@ -16,6 +16,7 @@ class CreateProviderAppointsTable extends Migration
         Schema::create('provider_appoints', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('appoints_day',255);
+            $table->unsignedBigInteger('shop_id');
             $table->unsignedBigInteger('provider_id');
             $table->unsignedBigInteger('open_time');
             $table->unsignedBigInteger('close_time');

@@ -7,7 +7,6 @@
     <title>Impro</title>
     <link href="{{ mix('css/auth/login/index.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-
 </head>
 <body>
     <header>

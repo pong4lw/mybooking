@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ url($shopId.'/login') }}">
+                    <form method="POST" action="{{ url('toyonaka/login') }}">
                         @csrf
 
                         <div class="form-group row">

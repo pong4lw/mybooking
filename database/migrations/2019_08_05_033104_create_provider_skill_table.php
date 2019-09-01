@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSettingsTable extends Migration
+class CreateProviderSkillTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create('provider_skill', function (Blueprint $table) {
             $table->bigIncrements('id');
-
-            $table->string('value1',25);
-            $table->string('value2',25);
-            $table->string('used_at',50);
+            $table->unsignedBigInteger('provider_id');
+            $table->unsignedBigInteger('service_id');
             $table->unsignedBigInteger('shop_id');
             $table->timestamps();
         });
@@ -31,6 +29,6 @@ class CreateSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('settings');
+        Schema::dropIfExists('provider_service');
     }
 }

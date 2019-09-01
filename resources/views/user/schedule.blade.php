@@ -83,7 +83,7 @@
       <?php if($v->used_at){ ?>
      
      <li style="padding:7px;">   
- <a href="{{url('user/schedule_change/')}}?id={{$v->id}}">
+ <a href="{{url($shopId.'user/schedule_change/')}}?id={{$v->id}}">
         <?php if ($v->is_delete){ ?>
         <i style="color:#FE3D34;">●</i>        
 

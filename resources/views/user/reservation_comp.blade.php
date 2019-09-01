@@ -6,7 +6,7 @@
 
 </style>
 <!-- Breadcrumbs-->
-<form  action="{{ url('/user/reservation_comp') }}" method="GET">
+<form  action="{{ url($shopId.'/user/reservation_comp') }}" method="GET">
 
 <ol class="breadcrumb">
     <li class="breadcrumb-item"></li>
@@ -51,7 +51,7 @@
 @section('footer_js')
 <script type="text/javascript">
     $('.btn_back').click(function(){
-        location.href="{{url('user/')}}";
+        location.href="{{url($shopId.'user/')}}";
         console.log('btn');
     });
 

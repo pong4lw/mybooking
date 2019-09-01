@@ -17,7 +17,7 @@
 <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
 
 <!-- Breadcrumbs-->
-<form  action="{{ url('/user/schedule_cancel_conform') }}" method="GET">
+<form  action="{{ url($shopId.'/user/schedule_cancel_conform') }}" method="GET">
     <!-- Example DataTables Card-->
     <div class="card mb-3" style="text-align: center;margin: auto">
         <input name="id" id="id" type="hidden" value="{{$plans->id}}">
@@ -55,7 +55,7 @@
 @section('footer_js')
 <script type="text/javascript">
     $('.btn_back').click(function(){
-        location.href="{{url('user/index')}}";
+        location.href="{{url($shopId.'user/index')}}";
     });
 </script>
 

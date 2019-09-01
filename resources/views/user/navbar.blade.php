@@ -1,6 +1,6 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="{{ url('/user') }}">MyBooking</a>
+    <a class="navbar-brand" href="{{ url($shopId.'/user') }}">MyBooking</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 
     <span class="navbar-toggler-icon"></span>
@@ -9,21 +9,21 @@
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="ダッシュボード">
-                <a class="nav-link" href="{{ url('/user') }}">
+                <a class="nav-link" href="{{ url($shopId.'/user') }}">
                     <i class="fa fa-fw fa-bullhorn"></i>
                     <span class="nav-link-text">ダッシュボード</span>
                 </a>
             </li>
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="新規予約">
-                <a class="nav-link" href="{{ url('/user/reservation') }}">
+                <a class="nav-link" href="{{ url($shopId.'/user/reservation') }}">
                     <i class="fa fa-fw fa-user-o"></i>
                     <span class="nav-link-text">新規予約</span>
                 </a>
             </li>
 
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="予約確認">
-                <a class="nav-link" href="{{ url('/user/schedule') }}">
+                <a class="nav-link" href="{{ url($shopId.'/user/schedule') }}">
                     <i class="fa fa-fw fa-book"></i>
                     <span class="nav-link-text">予約確認</span>
                 </a>
@@ -37,7 +37,7 @@
             </li>
 -->
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="設定">
-                <a class="nav-link" href="{{ url('/user/setting') }}">
+                <a class="nav-link" href="{{ url($shopId.'/user/setting') }}">
                     <i class="fa fa-fw fa-address-book-o"></i>
                     <span class="nav-link-text">設定</span>
                 </a>
@@ -54,7 +54,7 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                <!-- <a href="{{ url('/user/logout') }}" class="nav-link" data-toggle="modal" data-target="{{ url('/user/logout') }}"> -->
-                 <a href="{{ url('/user/logout') }}" class="nav-link">
+                 <a href="{{ route('logout') }}" class="nav-link">
                     <i class="fa fa-fw fa-sign-out"></i>  Logout</a>
             </li>
         </ul>

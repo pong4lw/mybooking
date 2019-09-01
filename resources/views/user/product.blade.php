@@ -3,8 +3,8 @@
 <!-- Breadcrumbs-->
 
 <h3 class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{ url('/user') }}">ユーザーメニュー</a></li>
-    <li class="breadcrumb-item active"><a href="{{ url('/user/product') }}">チケット</a></li>
+    <li class="breadcrumb-item"><a href="{{ url($shopId.'/user') }}">ユーザーメニュー</a></li>
+    <li class="breadcrumb-item active"><a href="{{ url($shopId.'/user/product') }}">チケット</a></li>
 
 </ol>
 
@@ -21,7 +21,7 @@
 <script type="text/javascript">
     $('#add_tickets').click(function(){
         $.ajax({
-            url: '{{url('user/ticketadd')}}',
+            url: '{{url($shopId.'user/ticketadd')}}',
             dataType: 'json',
             crossDomain: true,
             cache: false,

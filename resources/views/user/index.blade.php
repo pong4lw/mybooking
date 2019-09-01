@@ -32,11 +32,11 @@
 <!-- Breadcrumbs-->
 <div style="text-align: center;">
 
-        <div class="title-area" style="background-color:#F2453D;width:350px;margin-top:32px; "><a href="{{ url('/user/reservation') }}"><div class="menu-btn"><h3><i class="fad fa-alarm-plus"></i>新規予約</h3></div></a></div>
-        <div class="title-area" style="background-color:#2B98F0;width:350px;margin-top:32px;"><a href="{{ url('/user/schedule') }}"><div class="menu-btn"><h3><i class="fas fa-arrows-alt-h"></i>予約確認</h3></div></a></div>
+        <div class="title-area" style="background-color:#F2453D;width:350px;margin-top:32px; "><a href="{{ url($shopId.'/user/reservation') }}"><div class="menu-btn"><h3><i class="fad fa-alarm-plus"></i>新規予約</h3></div></a></div>
+        <div class="title-area" style="background-color:#2B98F0;width:350px;margin-top:32px;"><a href="{{ url($shopId.'/user/schedule') }}"><div class="menu-btn"><h3><i class="fas fa-arrows-alt-h"></i>予約確認</h3></div></a></div>
         <!-- <div style="background-color:#FD9726;width:95%;"><a href="{{ url('/user/product') }}"><div class="menu-btn">チケット</div></a></div> -->
         
-        <div class="title-area" style="background-color:#8CC151;width:350px;margin-top:32px;"><a href="{{ url('/user/setting') }}"><div class="menu-btn"><h3><i class="fas fa-user-cog"></i>設定</h3></div></a></div>
+        <div class="title-area" style="background-color:#8CC151;width:350px;margin-top:32px;"><a href="{{ url($shopId.'/user/setting') }}"><div class="menu-btn"><h3><i class="fas fa-user-cog"></i>設定</h3></div></a></div>
 </div>
 
 @endsection

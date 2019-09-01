@@ -15,13 +15,23 @@ class IndexController extends Controller
         $this->middleware('auth');
     }
 
-	public function index(){
-	    return view('user.index');
+	public function index($shop_id){
+		$list['shopId'] = $this->isShopId($shop_id);
+		if(!$list['shopId']){
+			return redirect('login');
+		}		
+
+	    return view('user.index',$list);
 	}
 
-	public function login(){
+	public function login($shop_id){
+		$list['shopId'] = $this->isShopId($shop_id);
+		if(!$list['shopId']){
+			return redirect('login');
+		}		
+
 		$users = new \App\Models\Users();
-		$users = $users->all();
-	    return view('auth.login', $users);
+		$list['users'] = $users->all();
+	    return view('auth.login', $list);
 	}
 }

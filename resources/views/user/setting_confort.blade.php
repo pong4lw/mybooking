@@ -2,12 +2,12 @@
     @section('content')
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ url('/user/setting') }}">プロフィール</a></li>
-            <li class="breadcrumb-item active"><a href="{{ url('/user/setting/mail') }}">メール</a></li>
-            <li class="breadcrumb-item"><a href="{{ url('/user/setting/receive') }}">通知設定</a></li>
+            <li class="breadcrumb-item"><a href="{{ url($shopId.'/user/setting') }}">プロフィール</a></li>
+            <li class="breadcrumb-item active"><a href="{{ url($shopId.'/user/setting/mail') }}">メール</a></li>
+            <li class="breadcrumb-item"><a href="{{ url($shopId.'/user/setting/receive') }}">通知設定</a></li>
         </ol>
         <!-- Example DataTables Card-->
-        <form action="{{ url('/user/setting_confort') }}" method="GET">
+        <form action="{{ url($shopId.'/user/setting_confort') }}" method="GET">
         <div class="mb-3">
             <div class="mb-3" name="image" value="{{ $user->image }}"></div>
 

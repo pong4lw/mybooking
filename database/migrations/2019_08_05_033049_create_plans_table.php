@@ -19,6 +19,7 @@ class CreatePlansTable extends Migration
             $table->unsignedBigInteger('space_id');
             $table->unsignedBigInteger('services_id');
             $table->unsignedBigInteger('client_id');
+            $table->unsignedBigInteger('shop_id');
             $table->unsignedBigInteger('provider_id');
             $table->unsignedBigInteger('is_open')->default('0');
             $table->unsignedBigInteger('is_delete')->default('0');

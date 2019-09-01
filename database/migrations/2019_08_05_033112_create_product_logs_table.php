@@ -15,6 +15,7 @@ class CreateProductLogsTable extends Migration
     {
         Schema::create('product_logs', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('shop_id');
             $table->timestamps();
         });
     }

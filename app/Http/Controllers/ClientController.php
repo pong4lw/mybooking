@@ -14,7 +14,7 @@ class ClientController extends Controller
         $this->middleware('auth');
     }
 
-	public function index(){
+	public function index($shop_id){
 	    return view('client.index');
 	}
 }
