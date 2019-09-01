@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 use App\Models\Service;
 use App\Models\Service_descriptions;
-use App\Models\Spaces;
-
-use App\Models\Provieder_appoints;
+use App\Models\Models\Provieder_appoints;
 use App\Models\Provieder_services;
 use App\Models\Users;
 use App\Models\Tickets;
@@ -27,21 +25,11 @@ class UserController extends Controller
 		$this->middleware('auth');
 	}
 
-	public function index($shop_id = null){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
-
+	public function index(){
 		return view('user.index',$list);
 	}
 
-	public function reservation($shop_id = null){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}
-
+	public function reservation(){
 		$list['services'] = Service::type();
 		$staffs = Admin::where('user_type' , 'staff')->get();
 
@@ -54,11 +42,7 @@ class UserController extends Controller
 		return view('user.reservation',$list);
 	}
 
-	public function reservation_update($shop_id, $id = null){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}
+	public function reservation_update($id = null){
 
 		if(isset($__REQUEST['id'])){$id = $__REQUEST['id'];}
 		$list['services'] = Service::type();
@@ -77,12 +61,7 @@ class UserController extends Controller
 		return view('user.reservation_update', $list);
 	}
 
-	public function reservation_update_conform($shop_id, $id = null){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
-
+	public function reservation_update_conform($id = null){
 		if(isset($__REQUEST['id'])){$id = $__REQUEST['id'];}
 		$list['services'] = Service::type();
 		$staffs = Admin::where('user_type' ,'=', 'staff')->get();
@@ -109,11 +88,7 @@ class UserController extends Controller
 		return view('user.reservation_update_conform', $list);
 	}
 
-	public function reservation_cancel($shop_id, $id = null){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function reservation_cancel($id = null){
 
 		if(isset($__REQUEST['id'])){$id = $__REQUEST['id'];}
 		$list['services'] = Service::type();
@@ -132,11 +107,7 @@ class UserController extends Controller
 		return view('user.reservation_cancel', $list);
 	}
 
-	public function reservation_cancel_conform($shop_id, $id = null){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function reservation_cancel_conform($id = null){
 
 		if(isset($__REQUEST['id'])){$id = $__REQUEST['id'];}
 		$list['services'] = Service::type();
@@ -160,11 +131,7 @@ class UserController extends Controller
 		return view('user.reservation_cancel_conform', $list);
 	}
 
-	public function reservation_change($shop_id, $id = null){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function reservation_change($id = null){
 
 		if(isset($__REQUEST['id'])){$id = $__REQUEST['id'];}
 		$list['services'] = Service::type();
@@ -183,11 +150,7 @@ class UserController extends Controller
 		return view('user.reservation_change', $list);
 	}
 
-	public function reservation_conform($shop_id, $id = null){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function reservation_conform($id = null){
 
 		$clientId = '';
 		$list['services'] = Service::type();
@@ -205,11 +168,7 @@ class UserController extends Controller
 		return view('user.reservation_conform', $list);
 	}
 
-	public function reservation_comp($shop_id, $id = null){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function reservation_comp($id = null){
 
 		$clientId = '';
 		$list['services'] = Service::type();
@@ -248,11 +207,7 @@ class UserController extends Controller
 		return view('user.reservation_comp', $list);
 	}
 
-	public function ticketadd($shop_id){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function ticketadd(){
 
 		$db = Tickets::where('client_id', '=', Auth::user()->id)->first();
 		if(!$db){
@@ -266,11 +221,7 @@ class UserController extends Controller
 		return $db->save();
 	}
 
-	public function ticketuse($shop_id){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function ticketuse(){
 
 		$Tickets = Tickets::where('client_id', Auth::user()->id)->get();
 		$Tickets = $Tickets[0];
@@ -286,11 +237,7 @@ class UserController extends Controller
 		}
 	}
 
-	public function schedule($shop_id){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function schedule(){
 
 		$list['plan'] = Plans::where('client_id', Auth::user()->id)->where('used_at', '>=' ,date('Y-m-d'))->orderBy('used_at')->get();
 		$list['week'] = array('日','月','火','水','木','金','土');
@@ -307,36 +254,24 @@ class UserController extends Controller
 		return view('user.schedule', $list);
 	}
 
-	public function product($shop_id){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function product(){
 
 		return view('user.product');
 	}
 
-	public function setting($shop_id){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function setting(){
 
 		$list['user'] = Users::find(Auth::user()->id);
 		return view('user.setting', $list);
 	}
 
-	public function setting_update($shop_id){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function setting_update(){
 		$list['user'] = Users::find(Auth::user()->id);
 		return view('user.setting_update', $list);
 	}
 
-	public function setting_confort($shop_id){
-		$list['shopId'] = $this->isShopId($shop_id);
+	public function setting_confort(){
+		$list['shopId'] = $this->isShopId();
 		if(!$list['shopId']){
 			return redirect('login');
 		}
@@ -356,11 +291,7 @@ class UserController extends Controller
 		return view('user.setting', $list);
 	}
 
-	public function settingmail($shop_id){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function settingmail(){
 
 		$user = Users::find(Auth::user()->id);
 		$list['user'] = $user;
@@ -368,11 +299,7 @@ class UserController extends Controller
 		return view('user.setting_mail', $list);
 	}
 
-	public function settingmail_update($shop_id){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function settingmail_update(){
 
 		$user = Users::find(Auth::user()->id);
 		$list['user'] = $user;
@@ -380,11 +307,7 @@ class UserController extends Controller
 		return view('user.setting_mail_update', $list);
 	}
 
-	public function settingmail_confort($shop_id){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function settingmail_confort(){
 
 		$user = Users::find(Auth::user()->id);
 
@@ -399,11 +322,7 @@ class UserController extends Controller
 		return view('user.setting_mail', $list);
 	}
 
-	public function setting_password($shop_id){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function setting_password(){
 
 		$user = Users::find(Auth::user()->id);
 
@@ -417,11 +336,7 @@ class UserController extends Controller
 		return view('user.setting_mail', $list);
 	}
 
-	public function setting_password_update($shop_id){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function setting_password_update(){
 
 		$user = Users::find(Auth::user()->id);
 
@@ -436,11 +351,7 @@ class UserController extends Controller
 		return view('user.setting_mail', $list);
 	}
 
-	public function setting_password_confort($shop_id){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function setting_password_confort(){
 		$user = Users::find(Auth::user()->id);
 
 		$list['user'] = $user;
@@ -454,22 +365,14 @@ class UserController extends Controller
 		return view('user.setting_mail', $list);
 	}
 
-	public function settingreceive($shop_id){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function settingreceive(){
 
 		$user = Users::find(Auth::user()->id);
 		$list['user'] = $user;
 		return view('user.setting_receive', $list);
 	}
 
-	public function settingreceive_confort($shop_id){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
+	public function settingreceive_confort(){
 
 		$user = Users::find(Auth::user()->id);		
 		
