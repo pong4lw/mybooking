@@ -25,15 +25,10 @@ Route::group(['middleware' => 'auth:admin'], function(){
 	Route::get('admin/userupdate/', 'Admin\UserController@userupdate');
 	Route::post('admin/userupdate/', 'Admin\StaffController@userupdate');
 
-<<<<<<< HEAD
+
 	Route::get('admin/staff', 'Admin\StaffController@stafflist');
 	Route::get('admin/staffs', 'Admin\StaffController@stafflist');
 	Route::post('admin/staffs', 'Admin\StaffController@stafflist');
-=======
-//ユーザー
-	Route::get('/user', 'AdminController@user');
-	Route::post('/user', 'AdminController@user');
->>>>>>> ca9fa7dc19c4d003e61539958651bd5338bf1723
 
 	Route::post('admin/staff/addmail', 'Admin\StaffController@staffaddmail');
 
@@ -45,7 +40,6 @@ Route::group(['middleware' => 'auth:admin'], function(){
 	Route::get('admin/staffupdate/', 'Admin\StaffController@staffupdate');
 	Route::post('admin/staffupdate/', 'Admin\StaffController@staffupdate');
 
-<<<<<<< HEAD
 	Route::get('admin/staffupdate/{user_id}', 'Admin\StaffController@staffupdate');
 	Route::post('admin/staffupdate/{user_id}', 'Admin\StaffController@staffupdate');
 
@@ -152,13 +146,12 @@ Route::group(['middleware' => 'auth:web'], function(){
 
 	Route::post('user/setting/receive', 'UserController@settingreceive');
 	Route::post('user/setting/receive_confort', 'UserController@settingreceive_confort');
-=======
 	Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 	Route::post('register', 'Auth\RegisterController@register');
 	Route::resetPassword();
 	Route::emailVerification();
 });
-*/
+
 Route::get('/', 'Site\SiteController@index')->name('site');
 Route::view('login', 'auth.login');
 
@@ -232,5 +225,4 @@ Route::group(['middleware' => 'auth:web'], function(){
 
 	Route::post('/user/setting/receive', 'UserController@settingreceive');
 	Route::post('/user/setting/receive_confort', 'UserController@settingreceive_confort');
->>>>>>> ca9fa7dc19c4d003e61539958651bd5338bf1723
 });

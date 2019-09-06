@@ -26,19 +26,12 @@ class UserController extends Controller
 	}
 
 	public function index(){
-<<<<<<< HEAD
 
 		return view('user.index');
 	}
 
 	public function reservation(){
 
-=======
-		return view('user.index',$list);
-	}
-
-	public function reservation(){
->>>>>>> ca9fa7dc19c4d003e61539958651bd5338bf1723
 		$list['services'] = Service::type();
 		$staffs = Admin::where('user_type' , 'staff')->get();
 
@@ -51,12 +44,8 @@ class UserController extends Controller
 		return view('user.reservation',$list);
 	}
 
-<<<<<<< HEAD
-	public function reservation_update( $id = null){
 	
-=======
 	public function reservation_update($id = null){
->>>>>>> ca9fa7dc19c4d003e61539958651bd5338bf1723
 
 		if(isset($__REQUEST['id'])){$id = $__REQUEST['id'];}
 		$list['services'] = Service::type();
@@ -76,10 +65,7 @@ class UserController extends Controller
 	}
 
 	public function reservation_update_conform($id = null){
-<<<<<<< HEAD
 
-=======
->>>>>>> ca9fa7dc19c4d003e61539958651bd5338bf1723
 		if(isset($__REQUEST['id'])){$id = $__REQUEST['id'];}
 		$list['services'] = Service::type();
 		$staffs = Admin::where('user_type' ,'=', 'staff')->get();
@@ -106,11 +92,7 @@ class UserController extends Controller
 		return view('user.reservation_update_conform', $list);
 	}
 
-<<<<<<< HEAD
-	public function reservation_cancel($shop_id, $id = null){
-=======
 	public function reservation_cancel($id = null){
->>>>>>> ca9fa7dc19c4d003e61539958651bd5338bf1723
 
 		if(isset($__REQUEST['id'])){$id = $__REQUEST['id'];}
 		$list['services'] = Service::type();
@@ -129,11 +111,7 @@ class UserController extends Controller
 		return view('user.reservation_cancel', $list);
 	}
 
-<<<<<<< HEAD
-	public function reservation_cancel_conform($shop_id, $id = null){
-=======
 	public function reservation_cancel_conform($id = null){
->>>>>>> ca9fa7dc19c4d003e61539958651bd5338bf1723
 
 		if(isset($__REQUEST['id'])){$id = $__REQUEST['id'];}
 		$list['services'] = Service::type();
@@ -157,12 +135,7 @@ class UserController extends Controller
 		return view('user.reservation_cancel_conform', $list);
 	}
 
-<<<<<<< HEAD
-	public function reservation_change($shop_id, $id = null){
-=======
 	public function reservation_change($id = null){
->>>>>>> ca9fa7dc19c4d003e61539958651bd5338bf1723
-
 		if(isset($__REQUEST['id'])){$id = $__REQUEST['id'];}
 		$list['services'] = Service::type();
 		$staffs = Admin::where('user_type' , 'staff')->get();
@@ -180,12 +153,7 @@ class UserController extends Controller
 		return view('user.reservation_change', $list);
 	}
 
-<<<<<<< HEAD
-	public function reservation_conform($shop_id, $id = null){
-=======
 	public function reservation_conform($id = null){
->>>>>>> ca9fa7dc19c4d003e61539958651bd5338bf1723
-
 		$clientId = '';
 		$list['services'] = Service::type();
 		$list['services'] = array($__REQUEST["services"] => $list['services'][$__REQUEST["services"]]);
@@ -202,12 +170,7 @@ class UserController extends Controller
 		return view('user.reservation_conform', $list);
 	}
 
-<<<<<<< HEAD
-	public function reservation_comp($shop_id, $id = null){
-=======
 	public function reservation_comp($id = null){
->>>>>>> ca9fa7dc19c4d003e61539958651bd5338bf1723
-
 		$clientId = '';
 		$list['services'] = Service::type();
 		$list['services'] = array($__REQUEST["services"] => $list['services'][$__REQUEST["services"]]);
@@ -245,12 +208,7 @@ class UserController extends Controller
 		return view('user.reservation_comp', $list);
 	}
 
-<<<<<<< HEAD
-	public function ticketadd($shop_id){
-=======
 	public function ticketadd(){
->>>>>>> ca9fa7dc19c4d003e61539958651bd5338bf1723
-
 		$db = Tickets::where('client_id', '=', Auth::user()->id)->first();
 		if(!$db){
 			$db = new Tickets();
@@ -263,12 +221,7 @@ class UserController extends Controller
 		return $db->save();
 	}
 
-<<<<<<< HEAD
-	public function ticketuse($shop_id){
-=======
 	public function ticketuse(){
->>>>>>> ca9fa7dc19c4d003e61539958651bd5338bf1723
-
 		$Tickets = Tickets::where('client_id', Auth::user()->id)->get();
 		$Tickets = $Tickets[0];
 		$count = $Tickets->count;
@@ -317,15 +270,6 @@ class UserController extends Controller
 	}
 
 	public function setting_confort(){
-<<<<<<< HEAD
-	
-=======
-		$list['shopId'] = $this->isShopId();
-		if(!$list['shopId']){
-			return redirect('login');
-		}
->>>>>>> ca9fa7dc19c4d003e61539958651bd5338bf1723
-
 		$user = Users::find(Auth::user()->id);
 
 		$list['user'] = $user;
