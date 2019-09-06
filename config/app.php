@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Gym'),
+    'name' => env('APP_NAME', 'MyBooking'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost/gym'),
+    'url' => env('APP_URL', 'http://localhost/mybooking'),
 
     'asset_url' => env('ASSET_URL', null),
 

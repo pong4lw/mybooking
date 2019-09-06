@@ -17,7 +17,7 @@ class Controller extends BaseController
     }
 
 	public function index(){
-	    return view('welcome');
+	    return view('user.index');
 	}
 
 	public function isShopId($shop_id){

@@ -17,7 +17,7 @@ class CreateProviderServiceTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('provider_id');
             $table->unsignedBigInteger('appoint_times');
-            $table->unsignedBigInteger('shop_id');
+            $table->unsignedBigInteger('shop_id')->default(0);
             $table->unsignedBigInteger('service_id');
             $table->timestamps();
         });

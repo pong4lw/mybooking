@@ -16,9 +16,9 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('client_id');
+            $table->unsignedBigInteger('shop_id')->default(0);
             $table->string('image',255)->default('');
             $table->string('value',255)->default('');
-            $table->unsignedBigInteger('shop_id');
             $table->unsignedBigInteger('count');
             $table->string('used_at',50);
 

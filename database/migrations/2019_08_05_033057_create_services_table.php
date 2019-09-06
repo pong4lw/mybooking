@@ -17,7 +17,7 @@ class CreateServicesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name',255);
             $table->unsignedBigInteger('space_id')->default(1); 
-            $table->unsignedBigInteger('shop_id');
+            $table->unsignedBigInteger('shop_id')->default(0);
             $table->string('value',255)->default('');          
             $table->unsignedBigInteger('used_time')->default(0);
             $table->text('description')->nullable();

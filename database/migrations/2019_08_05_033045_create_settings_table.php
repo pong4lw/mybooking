@@ -19,7 +19,7 @@ class CreateSettingsTable extends Migration
             $table->string('value1',25);
             $table->string('value2',25);
             $table->string('used_at',50);
-            $table->unsignedBigInteger('shop_id');
+            $table->unsignedBigInteger('shop_id')->default(0);
             $table->timestamps();
         });
     }

@@ -16,10 +16,6 @@ class IndexController extends Controller
     }
 
 	public function index($shop_id){
-		$list['shopId'] = $this->isShopId($shop_id);
-		if(!$list['shopId']){
-			return redirect('login');
-		}		
 
 	    return view('user.index',$list);
 	}

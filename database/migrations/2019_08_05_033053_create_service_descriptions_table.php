@@ -17,7 +17,7 @@ class CreateServiceDescriptionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name',255);
             $table->unsignedBigInteger('services_id');
-            $table->unsignedBigInteger('shop_id');
+            $table->unsignedBigInteger('shop_id')->default(0);
             $table->string('duration',255);
             $table->text('description')->nullable();
             $table->string('image',255);

@@ -23,6 +23,7 @@ class CreatePlansTable extends Migration
             $table->unsignedBigInteger('provider_id');
             $table->unsignedBigInteger('is_open')->default('0');
             $table->unsignedBigInteger('is_delete')->default('0');
+            $table->unsignedBigInteger('shop_id')->default('0');
             $table->string('used_at',50);
             $table->string('used_time',50);
             $table->timestamps();
