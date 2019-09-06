@@ -19,7 +19,7 @@ class Controller extends BaseController
 	public function index(){
 	    return view('user.index');
 	}
-
+/*
 	public function isShopId($shop_id){
 		$shops = new Shops();
 		foreach ($shops->shopIdArray as $k => $v) {
@@ -29,5 +29,5 @@ class Controller extends BaseController
 		}
 		return false;
 	}
-	
+*/
 }
