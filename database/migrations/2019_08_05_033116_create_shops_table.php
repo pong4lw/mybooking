@@ -19,6 +19,7 @@ class CreateShopsTable extends Migration
 
             $table->string('open',255)->default('');
             $table->string('close',255)->default('');
+              $table->unsignedBigInteger('shop_id')->default(0);
 
             $table->string('week',7)->default('');
             $table->timestamps();

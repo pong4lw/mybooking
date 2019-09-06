@@ -16,7 +16,7 @@ class CreateSpacesTable extends Migration
         Schema::create('spaces', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('client_id');
-            $table->unsignedBigInteger('shop_id');
+            $table->unsignedBigInteger('shop_id')->default(0);
             $table->unsignedBigInteger('provider_id');
             $table->dateTime('used_at');   
             $table->timestamps();
