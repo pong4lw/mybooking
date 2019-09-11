@@ -28,14 +28,12 @@
                     <span class="nav-link-text">予約確認</span>
                 </a>
             </li>
-<!--
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="チケット">
                 <a class="nav-link" href="{{ url('/user/product') }}">
                     <i class="fa fa-fw fa-ticket"></i>
                     <span class="nav-link-text">チケット</span>
                 </a>
             </li>
--->
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="設定">
                 <a class="nav-link" href="{{ url('/user/setting') }}">
                     <i class="fa fa-fw fa-address-book-o"></i>

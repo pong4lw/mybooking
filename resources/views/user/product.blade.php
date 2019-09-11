@@ -2,17 +2,14 @@
 @section('content')
 <!-- Breadcrumbs-->
 
-<h3 class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{ url($shopId.'/user') }}">ユーザーメニュー</a></li>
-    <li class="breadcrumb-item active"><a href="{{ url($shopId.'/user/product') }}">チケット</a></li>
-
-</ol>
 
 <!-- Example DataTables Card-->
 <div class="mb-3">
-    <div class="mb-3">チケット</div>
+    <div class="mb-3"></div>
+    comming soon
     <div class="button-wrapper">
-        <input id="add_tickets" class="button" type="button" value="チケット購入">
+
+<!--        <input id="add_tickets" class="button" type="button" value="チケット購入">-->
     </div>
 
 </div>
@@ -21,7 +18,7 @@
 <script type="text/javascript">
     $('#add_tickets').click(function(){
         $.ajax({
-            url: '{{url($shopId.'user/ticketadd')}}',
+            url: '{{url('user/ticketadd')}}',
             dataType: 'json',
             crossDomain: true,
             cache: false,

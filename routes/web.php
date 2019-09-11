@@ -169,8 +169,8 @@ Route::group(['prefix' => 'user'], function(){
 Route::group(['middleware' => 'auth:web'], function(){
 	Route::get('/', 'UserController@index');
 	Route::get('/home', 'UserController@index');
-//	Route::get('/user', 'UserController@index');
 
+	Route::get('/user', 'UserController@index');
 //ダッシュボード
 	Route::get('/user/index', 'UserController@index');
 

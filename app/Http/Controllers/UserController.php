@@ -47,7 +47,7 @@ class UserController extends Controller
 	
 	public function reservation_update($id = null){
 
-		if(isset($__REQUEST['id'])){$id = $__REQUEST['id'];}
+		if(isset($_REQUEST['id'])){$id = $_REQUEST['id'];}
 		$list['services'] = Service::type();
 		$staffs = Admin::where('user_type' , 'staff')->get();
 		if(is_null($id)){
@@ -66,7 +66,7 @@ class UserController extends Controller
 
 	public function reservation_update_conform($id = null){
 
-		if(isset($__REQUEST['id'])){$id = $__REQUEST['id'];}
+		if(isset($_REQUEST['id'])){$id = $_REQUEST['id'];}
 		$list['services'] = Service::type();
 		$staffs = Admin::where('user_type' ,'=', 'staff')->get();
 		if(is_null($id)){
@@ -94,7 +94,7 @@ class UserController extends Controller
 
 	public function reservation_cancel($id = null){
 
-		if(isset($__REQUEST['id'])){$id = $__REQUEST['id'];}
+		if(isset($_REQUEST['id'])){$id = $_REQUEST['id'];}
 		$list['services'] = Service::type();
 		$staffs = Admin::where('user_type' , 'staff')->get();
 		if(is_null($id)){
@@ -113,7 +113,7 @@ class UserController extends Controller
 
 	public function reservation_cancel_conform($id = null){
 
-		if(isset($__REQUEST['id'])){$id = $__REQUEST['id'];}
+		if(isset($_REQUEST['id'])){$id = $_REQUEST['id'];}
 		$list['services'] = Service::type();
 		$staffs = Admin::where('user_type' , 'staff')->get();
 		if(is_null($id)){
@@ -136,7 +136,7 @@ class UserController extends Controller
 	}
 
 	public function reservation_change($id = null){
-		if(isset($__REQUEST['id'])){$id = $__REQUEST['id'];}
+		if(isset($_REQUEST['id'])){$id = $_REQUEST['id'];}
 		$list['services'] = Service::type();
 		$staffs = Admin::where('user_type' , 'staff')->get();
 		if(is_null($id)){
@@ -156,16 +156,16 @@ class UserController extends Controller
 	public function reservation_conform($id = null){
 		$clientId = '';
 		$list['services'] = Service::type();
-		$list['services'] = array($__REQUEST["services"] => $list['services'][$__REQUEST["services"]]);
+		$list['services'] = array($_REQUEST["services"] => $list['services'][$_REQUEST["services"]]);
 
 		$staffs = Admin::where('user_type' , 'staff')->get();
 		foreach ($staffs as $v) {
 			$list['staffs'][$v['id']] = $v;
 		}
 
-		$list['staffs'] = array($__REQUEST["staffs"] => $list['staffs'][$__REQUEST["staffs"]]);
-		$list['re_date'] = $__REQUEST["re_date"];
-		$list['re_time'] = $__REQUEST["re_time"];
+		$list['staffs'] = array($_REQUEST["staffs"] => $list['staffs'][$_REQUEST["staffs"]]);
+		$list['re_date'] = $_REQUEST["re_date"];
+		$list['re_time'] = $_REQUEST["re_time"];
 		$list['tickets'] = Tickets::where('client_id',  Auth::user()->id)->first() ?? '0';
 		return view('user.reservation_conform', $list);
 	}
@@ -173,11 +173,11 @@ class UserController extends Controller
 	public function reservation_comp($id = null){
 		$clientId = '';
 		$list['services'] = Service::type();
-		$list['services'] = array($__REQUEST["services"] => $list['services'][$__REQUEST["services"]]);
+		$list['services'] = array($_REQUEST["services"] => $list['services'][$_REQUEST["services"]]);
 
-		$list['staffs'] = array($__REQUEST["staffs"] => Admin::find($__REQUEST["staffs"]));
-		$list['re_date'] = $__REQUEST["re_date"];
-		$list['re_time'] = $__REQUEST["re_time"];
+		$list['staffs'] = array($_REQUEST["staffs"] => Admin::find($_REQUEST["staffs"]));
+		$list['re_date'] = $_REQUEST["re_date"];
+		$list['re_time'] = $_REQUEST["re_time"];
 
 		$Tickets = Tickets::where('client_id', Auth::user()->id)->first() ?? '0';
 
@@ -190,14 +190,14 @@ class UserController extends Controller
 		}
 	*/
 		$plans = new Plans();
-		$plans->name = '1'.$__REQUEST['services'].$__REQUEST['staffs'].$__REQUEST['re_date'];
+		$plans->name = '1'.$_REQUEST['services'].$_REQUEST['staffs'].$_REQUEST['re_date'];
 
 		$plans->client_id = Auth::user()->id;
 		$plans->space_id = 1;
-		$plans->services_id = $__REQUEST['services'];
-		$plans->provider_id = $__REQUEST['staffs'];
-		$plans->used_at = $__REQUEST['re_date'];
-		$plans->used_time = $__REQUEST['re_time'];
+		$plans->services_id = $_REQUEST['services'];
+		$plans->provider_id = $_REQUEST['staffs'];
+		$plans->used_at = $_REQUEST['re_date'];
+		$plans->used_time = $_REQUEST['re_time'];
 		$plans->save();
 
 		$db = Tickets::where('client_id',Auth::user()->id)->update(['count' => $count-1]);
