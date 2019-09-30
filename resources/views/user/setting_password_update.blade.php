@@ -7,19 +7,19 @@
             <li class="breadcrumb-item"><a href="{{ url('/user/setting/receive') }}">通知設定</a></li>
 
         </ol>
-        <h3>通知設定</h3>
         <!-- Example DataTables Card-->
-        <div class="mb-3">
-            <form action="{{ url( 'user/setting/receive_confort' ) }}" method="GET">
-            <div class="mb-3">通知メールの受信</div>
-            <div  class="mb-3">
-                <input name="receive" type="radio" <?php if($user->is_receive == '1'){?> checked="checked"  <?php }?> value="1">有効
-                <input name="receive" type="radio" <?php if($user->is_receive == '0'){?> checked="checked" <?php }?> value="0">無効
-            </div>
 
-            <div class="button-wrapper"><input class="button" type="submit" value="確定"></div>
-            </form>
+        <div class="mb-3">
+        <form action="{{ url('/user/setting/password_update_confort') }}" method="POST">
+@csrf
+            <div class="mb-3">パスワードの変更</div>
+            <div  class="mb-3">
+
+                <input name="password" type="password" value="{{ $user->password }}"></div>
+
+            <div class="button-wrapper"><input class="button" type="submit" value="変更"></div>
         </div>
+        </form>        
     @endsection
     @section('footer_js')
 @endsection

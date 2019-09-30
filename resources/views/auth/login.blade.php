@@ -8,11 +8,7 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
-<<<<<<< HEAD
-                    <form method="POST" action="{{ url('user/login') }}">
-=======
                     <form method="POST" action="{{ url('/login') }}">
->>>>>>> ca9fa7dc19c4d003e61539958651bd5338bf1723
                         @csrf
 
                         <div class="form-group row">

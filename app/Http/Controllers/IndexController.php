@@ -15,12 +15,7 @@ class IndexController extends Controller
         $this->middleware('auth');
     }
 
-<<<<<<< HEAD
-	public function index($shop_id){
-
-=======
 	public function index(){
->>>>>>> ca9fa7dc19c4d003e61539958651bd5338bf1723
 	    return view('user.index',$list);
 	}
 

@@ -8,6 +8,7 @@
         </ol>
         <!-- Example DataTables Card-->
         <form action="{{ url('/user/setting_update') }}" method="GET">
+            @csrf
         <div class="mb-3">
             <div class="mb-3" name="image" value="{{ $user->image }}"></div>
 
@@ -26,6 +27,8 @@
             <div class="button-wrapper"><input class="button" type="submit" value="編集"></div>
         </div>
         </form>
+
+
     @endsection
     @section('footer_js')
 @endsection

@@ -10,6 +10,9 @@ Route::group(['prefix' => 'user'], function(){
 Route::get('admin', 'Admin\Auth\LoginController@login');
 Route::view('admin/login','admin.auth.login');
 
+Route::get('user/sendmail', 'UserController@sendmail');
+
+
 Route::group(['middleware' => 'auth:admin'], function(){
 	Route::get('admin/logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
 	Route::post('admin/logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
@@ -138,7 +141,13 @@ Route::group(['middleware' => 'auth:web'], function(){
 	Route::get('user/setting/mail_confort', 'UserController@settingmail_confort');
 
 	Route::get('user/setting/password', 'UserController@setting_password');
-	Route::get('user/setting/password_update', 'UserController@setting_password_update');
+	Route::get('user/setting/password_update', 'UserController@setting_password');
+	Route::get('user/setting/password_update_confort', 'UserController@password_update_confort');
+
+	Route::post('user/setting/password_update', 'UserController@setting_password');
+	Route::post('user/setting/password_update_confort', 'UserController@password_update_confort');
+
+
 	Route::get('user/setting/password_confort', 'UserController@setting_password_confort');
 
 	Route::get('user/setting/receive', 'UserController@settingreceive');
@@ -219,6 +228,9 @@ Route::group(['middleware' => 'auth:web'], function(){
 	Route::get('/user/setting/password', 'UserController@setting_password');
 	Route::get('/user/setting/password_update', 'UserController@setting_password_update');
 	Route::get('/user/setting/password_confort', 'UserController@setting_password_confort');
+
+	Route::post('/user/setting/password_update', 'UserController@setting_password_update');
+	Route::post('/user/setting/password_confort', 'UserController@setting_password_confort');
 
 	Route::get('/user/setting/receive', 'UserController@settingreceive');
 	Route::get('/user/setting/receive_confort', 'UserController@settingreceive_confort');

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 use App\Models\Service;
 use App\Models\Service_descriptions;
@@ -302,14 +303,13 @@ class UserController extends Controller
 	}
 
 	public function settingmail_confort(){
-
 		$user = Users::find(Auth::user()->id);
 
 		$list['user'] = $user;
 		if(!isset($_REQUEST['email_send'])){
 			return view('user.setting_mail', $list);
 		}
-
+		
 		$user['email'] = $_REQUEST['email_send'];
 //		$user['password'] = Hash::make($_REQUEST['password']);
 		$user->save();
@@ -342,8 +342,26 @@ class UserController extends Controller
 //		$user['email'] = $_REQUEST['email_send'];
 		$user['password'] = Hash::make($_REQUEST['password']);
 		$user->save();
-		return view('user.setting_mail', $list);
+		return view('user.setting_password_update', $list);
 	}
+
+	public function sendmail(){
+		if(!isset($_REQUEST['email'])){
+			Mail::send('emails.user_register', [
+    	        "message" => ""
+        	      ], function($message) {
+	            $message
+    	            ->to('hiroki.hon@gmail.com')
+        	        ->bcc('admin@mybooking.jp')
+            	    ->subject("ユーザー登録ありがとうございます");
+        	});
+    	}
+	}
+
+	public function sendmail_conform(){
+
+	}
+
 
 	public function setting_password_confort(){
 		$user = Users::find(Auth::user()->id);
