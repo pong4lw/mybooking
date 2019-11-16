@@ -29,6 +29,6 @@ class CreateProviderSkillTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('provider_service');
+        Schema::dropIfExists('provider_skill');
     }
 }

@@ -11,10 +11,11 @@ class ClientController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+   //     $this->middleware('auth');
     }
 
 	public function index($shop_id){
-	    return view('client.index');
+	$list['prefix'] = Shopdsp::where('id',Auth::id())->first()->shop_url ?? '';		
+	    return view('client.index',$list);
 	}
 }

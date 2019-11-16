@@ -36,4 +36,8 @@ class ResetPasswordController extends Controller
     {
         $this->middleware('auth:admin');
     }
+    public function showLinkRequestForm(){
+        retunr view('admin.auth.passwords.reset');
+    }
 }
+

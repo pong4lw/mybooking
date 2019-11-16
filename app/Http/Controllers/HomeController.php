@@ -8,7 +8,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('user.index');
+	$list['prefix'] = Shopdsp::where('id',Auth::id())->first()->shop_url;    	
+        return view('user.index',$list);
     }
 }
 

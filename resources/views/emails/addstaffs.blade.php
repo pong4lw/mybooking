@@ -1,5 +1,5 @@
 <div>
-スタッフ登録メール
-こちらから登録ください
-register
+{{ $usename ?? '' }}	
+{{ $text ?? '' }}
+{{ $footer ?? '' }}
 </div>

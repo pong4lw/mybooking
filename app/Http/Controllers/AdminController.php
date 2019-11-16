@@ -21,11 +21,9 @@ class AdminController extends Controller
 	}
 
 	public function index(){
-
 		$shops = new Shops();
 		$list['plan'] = Plans::where('shop_id', $shops->shopId)->get() ;
 		$list['services'] = Services::all();
-
 		foreach($list['plan'] as $k => $plan) {
 			$staff = Admins::where('id',  $plan['provider_id'])->first();
 			$services = Services::where('id',  $plan['services_id'])->first();
@@ -46,6 +44,8 @@ class AdminController extends Controller
 			$list['provider'][$k]['delete_count'] = Plans::where('provider_id',  $provider['id'])->where('is_delete','1')->where('shop_id', $shops->shopId)->count();
 			$list['provider'][$k]['count'] = Plans::where('provider_id',  $provider['id'])->where('shop_id', $shops->shopId)->count();
 		}
+		$list['adminuser'] = Admins::where('id',Auth::id());
+
 		return view('admin.index', $list);
 	}
 

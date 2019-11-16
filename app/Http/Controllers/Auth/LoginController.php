@@ -29,7 +29,7 @@ class LoginController extends BaseController
      *
      * @var string
      */
-    protected $redirectTo = '/user/lndex';
+    protected $redirectTo = '/user';
 
     /**
      * Create a new controller instance.
@@ -37,8 +37,8 @@ class LoginController extends BaseController
      * @return void
      */
     public function __construct($shop_id = null)
-    { 
-        $this->middleware('guest')->except('logout');
+    {
+      //  $this->middleware('guest')->except('logout');
     }
     
    public function logout(Request $request)
@@ -49,6 +49,7 @@ class LoginController extends BaseController
 
         return $this->loggedOut($request) ?: redirect('login');
     }
+
 
     protected function credentials(Request $request)
     {

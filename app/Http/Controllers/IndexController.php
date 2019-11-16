@@ -12,7 +12,7 @@ class IndexController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+   //     $this->middleware('auth');
     }
 
 	public function index(){
@@ -22,6 +22,7 @@ class IndexController extends Controller
 	public function login(){
 		$users = new \App\Models\Users();
 		$list['users'] = $users->all();
+		$list['prefix'] = Shopdsp::where('id',Auth::user()->shop_id)->first()->shop_url;	
 	    return view('auth.login', $list);
 	}
 }

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use App\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +28,8 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/user/login';
+    protected $redirectTo = '/index';
+
 
     /**
      * Create a new controller instance.
@@ -37,7 +38,11 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+  //      $this->middleware('auth');
+    }
+    public function showRegisterForm()
+    {
+        return view('auth.register');  // 管理者用テンプレート
     }
 
     /**
@@ -63,11 +68,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        \App\Http\Controllers\MailController::userregister($data['name'],$data['email'],$data['password']);
+        return Admin::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
     }
-    
+
+    protected function guard()
+    {
+        return \Auth::guard('web');
+    }
 }

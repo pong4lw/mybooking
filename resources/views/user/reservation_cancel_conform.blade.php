@@ -17,7 +17,7 @@
 <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
 
 <!-- Breadcrumbs-->
-<form  action="{{ url($shopId.'/user/reservation_cancel') }}" method="GET">
+<form  action="{{ url('/user/reservation_cancel') }}" method="GET">
     <!-- Example DataTables Card-->
     <div class="card mb-3" style="text-align: center;margin: auto">
         <h3>キャンセル完了</h3>
@@ -53,7 +53,7 @@
 @section('footer_js')
 <script type="text/javascript">
     $('.btn_back').click(function(){
-        location.href="{{url($shopId.'user/index')}}";
+        location.href="{{url('user/index')}}";
     });
 </script>
 

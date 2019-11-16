@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -166,7 +165,7 @@ class PlanController extends BaseController
 
 	public function ticketadd(){
 		$shops = new Shops();
-		$db = Tickets::where('client_id',Auth::user()->id)->update(['count' => 2]);
+		$db = Tickets::where('client_id', Auth::user()->id)->update(['count' => 2]);
 
 		if(!$db){
 			$db = new Tickets();
