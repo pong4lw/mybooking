@@ -17,7 +17,7 @@
 
 
 <!-- Breadcrumbs-->
-<form  action="{{ url('/user/reservation_conform') }}" method="GET">
+<form action="{{ url('/user/reservation_conform') }}" method="GET">
     <!-- Example DataTables Card-->
     <div class="card mb-3" style="text-align: center;margin: auto">
         <h3>新規予約</h3>
@@ -46,7 +46,21 @@
         </li>
         <li class="item">予約日時</li>
 
-        <li class="item"><input  id="re_date" class="re_date" name="re_date" type="date" value="<?php echo date('Y-m-d')?>">  
+        <li class="item">
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{ asset('/vue-ctk-date-time-picker.css')}}"
+/>
+
+<div id="app">
+  <VueCtkDateTimePicker v-model="yourValue"></VueCtkDateTimePicker>
+</div>
+
+
+
+            <input  id="re_date" class="re_date" name="re_date" type="date" value="<?php echo date('Y-m-d')?>">  
 
             <select id="re_time" name="re_time" class="re_time">
                 <option value="10:00">10:00</option>
@@ -136,7 +150,11 @@
 <script type="text/javascript">
     $(function() {
         $('#re_date').pickadate({
-            format: 'yyyy年m月d日(ddd)'
+            format: 'yyyy-mm-dd'
+            ,today: ''
+            ,clear: ''
+            ,close: ''
+            ,min: [<?php echo Date('Y');?>, <?php echo Date('m');?>, <?php echo Date('d');?>],
         });
     });
    $(function() {
@@ -151,5 +169,21 @@
 );
     });
 </script>
+<script src="https://unpkg.com/vue" charset="utf-8"></script>
+<script
+  src="{{ asset('/vue-ctk-date-time-picker.umd.min.js')}}"
+  charset="utf-8"
+></script>
 
+<script type="text/javascript">
+  Vue.component('vue-ctk-date-time-picker', window['vue-ctk-date-time-picker']);
+  new Vue({
+    el: '#app',
+    data() {
+      return {
+        yourValue: null
+      };
+    }
+  });
+</script>
 @endsection
