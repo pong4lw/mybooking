@@ -16,7 +16,7 @@ class IndexController extends Controller
     }
 
 	public function index(){
-	    return view('user.index',$list);
+	    return view('user.index', $list);
 	}
 
 	public function login(){

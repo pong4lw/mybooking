@@ -1,22 +1,7 @@
 <?php
-
 Route::get('/shop','ShopController@index');
 
-/*
-$prefix = 'aaa';
-
-$shopdspList = \App\Models\Shopdsp::all();
-
-var_dump($_SERVER['REQUEST_URI']);
-//var_dump($shopdspList);
-exit;
-*/
-
-
-//Route::group(['prefix' => $prefix,
-
-Route::group([
-	'middleware' => 'auth:web'],
+Route::group(['middleware' => 'auth:web'],
 
  function(){
 	Route::get('/', 'UserController@index');
