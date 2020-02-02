@@ -22,6 +22,7 @@ class AdminController extends Controller
 
 	public function index(){
 		$shops = new Shops();
+
 		$list['plan'] = Plans::where('shop_id', $shops->shopId)->get() ;
 		$list['services'] = Services::all();
 		foreach($list['plan'] as $k => $plan) {
@@ -119,7 +120,6 @@ class AdminController extends Controller
 	}
 
 	public function postusercreate(){
-		$_GET;
 		$customer = new users();
 
 		return view('admin.user',$customer);
